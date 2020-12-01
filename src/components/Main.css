@@ -3,8 +3,11 @@ h1{
     font-weight: 700;
 }
 h2{
-    font-size: 16px;
+    font-size: 32px;
     font-weight: 400px;
+}
+h3{
+    font-size: 16px;
 }
 textarea{
     resize: none;
@@ -16,15 +19,19 @@ textarea{
     font-size: 16px;
     line-height: 20.8px;
 }
+.results-explain{
+    max-width: 577px;
+    margin-top: 120px;
+    padding-bottom: 48px;
+}
 .scramble-container{
     padding-top: 40px;
-    height: 100vh;
+   
 }
 .number select{
     width: 160px;
     height: 44px;
     border-radius:2px;
-    margin-bottom: 20px;
 }
 
 ::-webkit-scrollbar {
@@ -44,12 +51,15 @@ textarea{
   .main-btn{  
       margin-right: 20px;
       width: 220px;
+      margin-top: 20px;
   }
 
 
-  @media only screen and (max-device-width: 414px) {
-
+  @media only screen and (max-device-width: 415px) {
     .main-btn{
       width: 100%;
+    }
+    .results-explain{
+        margin-top: 40px;
     }
   }

@@ -1,11 +1,14 @@
 import './Main.css';
-import Teams from './Teams';
+import Team from './Team';
 import React, { Component} from "react";
 
 
 let names = [];
 let number = 1;
 let teams = [];
+let players = ["Armin", "Dizdar", "Aida", "Agic"];
+let players1 = ["Halid", "Saban", "Hakala", "Kemal"];
+let players2 = ["Serif", "Selma", "Zorica"];
 
 
 
@@ -22,11 +25,6 @@ class Main extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleNumber = this.handleNumber.bind(this);       
     }
-
-        TeamMember = () => {
-            <div>Armin</div>
-            console.log("here");
-        }
 
         handleChange(event) {
             this.setState({names: event.target.value});
@@ -55,12 +53,12 @@ class Main extends Component {
 
 render() {
     return ( 
-        <div className="container text-white scramble-container">
+        <div className="text-white scramble-container">
         <h1>Get started</h1>
         <form onSubmit={this.handleSubmit} id="scramble">
         <div className="row">
             <div className="col">
-            <h2>Add names, one name per row.</h2>
+            <h3>Add names, one name per row.</h3>
 
                 <textarea
                     value = {this.state.names}
@@ -70,7 +68,7 @@ render() {
         
             </div>
             <div className="col-sm number">
-            <h2>Number of teams.</h2>
+            <h3>Number of teams.</h3>
                 <select value={this.state.number}  onChange={this.handleNumber}>
                     <option>1</option>
                     <option>2</option>
@@ -92,7 +90,28 @@ render() {
 
             </div>
         </div>
-        <div className="row">
+        <div className="results-explain" id="results">
+            <h1>Results</h1>
+            <br></br>
+            <div>
+            <h3>Here are the teams. If the number of participants is unequal 
+                to the number of teams, some teams will have fewer or more players.</h3>
+            </div>
+        </div>
+        <div className="row team-container">
+
+            <div className="col">
+                <Team teamName = "1" players={players}/>
+            </div>
+
+            <div className="col">
+                <Team teamName = "2" players={players1}/>
+            </div>
+
+            <div className="col">
+                <Team teamName = "3" players={players2}/>
+            </div>
+
         </div>
 
        </div>

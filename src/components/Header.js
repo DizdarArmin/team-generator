@@ -6,7 +6,7 @@ class NavbarPage extends Component {
 
 render() {
   return ( 
-    <div className="container">
+    <div>
         <div className="header">
         <h1 className="text-white">Like scrambled eggs, but scrambled teams!</h1>
         <p className="text-white">Free, fast and super easy team scrambler. Enter a list of

@@ -1,0 +1,35 @@
+.btn-name{
+    text-align: left;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 10;
+    width: 320px;
+}
+li {
+    list-style-type: none;
+
+}
+.copy{
+    text-align: center;
+}
+
+ul{
+    margin:0;
+    padding:0;
+}
+
+.team-name{
+    color:white;
+    background-color: transparent;
+    pointer-events: none;
+    font-size: 22px;
+}
+
+@media only screen and (max-device-width: 415px) {
+
+    .btn-name{
+        width: 100%;
+        min-width: 320px;
+    }
+
+}
