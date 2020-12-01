@@ -1,0 +1,55 @@
+h1{
+    font-size: 32px;
+    font-weight: 700;
+}
+h2{
+    font-size: 16px;
+    font-weight: 400px;
+}
+textarea{
+    resize: none;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    line-height: 20.8px;
+}
+.scramble-container{
+    padding-top: 40px;
+    height: 100vh;
+}
+.number select{
+    width: 160px;
+    height: 44px;
+    border-radius:2px;
+    margin-bottom: 20px;
+}
+
+::-webkit-scrollbar {
+    width: 16px;
+    background: #99B9A3;
+    border-radius:  0 2px 2px 0px;
+  }
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background:#0B252C;
+    border: 3px solid #99B9A3;
+    border-radius: 15px;
+    
+  }
+  .main-btn{  
+      margin-right: 20px;
+      width: 220px;
+  }
+
+
+  @media only screen and (max-device-width: 414px) {
+
+    .main-btn{
+      width: 100%;
+    }
+  }
