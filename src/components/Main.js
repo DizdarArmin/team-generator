@@ -4,11 +4,51 @@ import React, { Component} from "react";
 
 
 let names = [];
-let number = 1;
-let teams = [];
+let namesBase = []
+let number = 0;
+let submit = false;
 let players = ["Armin", "Dizdar", "Aida", "Agic"];
 let players1 = ["Halid", "Saban", "Hakala", "Kemal"];
 let players2 = ["Serif", "Selma", "Zorica"];
+
+
+function Results(){
+    let result = null;
+    if (submit) {
+        result =<div className="results-explain" id="results">
+        <h1>Results</h1>
+        <br></br>
+        <div>
+        <h3>Here are the teams. If the number of participants is unequal 
+            to the number of teams, some teams will have fewer or more players.</h3>
+        </div> 
+        </div>
+    } 
+    return result;
+    submit = false;
+}
+
+function Create(value, name, size){
+    const teamBuild = <div className="col">
+    <Team teamName = {name+1} players={value}/>
+    </div>
+    return teamBuild
+}
+
+function CreateTeams(numberOfTeams){
+    let teams=[];
+    let size = names.length/numberOfTeams;
+    for (let i = 0; i < numberOfTeams; i++){   
+        let team = [];
+        for(let i = 0; i < size; i++){
+            let random = Math.floor(Math.random() * names.length); 
+            team.push(names[random]);
+            names.splice(random,1);
+        }
+        teams.push(Create(team,i))
+    }
+    return teams;
+}
 
 
 
@@ -28,8 +68,10 @@ class Main extends Component {
 
         handleChange(event) {
             this.setState({names: event.target.value});
-            names = this.state.names.split("\n");
-            console.log(names)
+            if(this.state.names !== undefined){
+                names = this.state.names.split("\n");
+                console.log(names)
+            }   
         }
         handleNumber = (event) => {
             this.setState({
@@ -41,17 +83,32 @@ class Main extends Component {
 
         handleSubmit(event){
             event.preventDefault();
-            names = this.state.names.split("\n");
-            number = this.state.number;            
-            console.log(names);
-            console.log(number);
-
+                if(this.state.names !== ""){
+                    names = this.state.names.split("\n");
+                    this.handleChange(event)
+                    number = this.state.number;        
+                    console.log(names);
+                    console.log(number);
+                    for(let i = 0; i < number; i++){
+                        let team;
+                        window[team + '1']= [];
+                        console.log ({team});
+                    }
+                }
+                submit = true;        
         }
         clear = () => {
             this.setState(this.base);
+            number = 0
+            names = this.base.names;
+            submit = false
         }
 
 render() {
+
+
+
+    
     return ( 
         <div className="text-white scramble-container">
         <h1>Get started</h1>
@@ -90,28 +147,11 @@ render() {
 
             </div>
         </div>
-        <div className="results-explain" id="results">
-            <h1>Results</h1>
-            <br></br>
-            <div>
-            <h3>Here are the teams. If the number of participants is unequal 
-                to the number of teams, some teams will have fewer or more players.</h3>
-            </div>
-        </div>
+        
+        {Results()}
+
         <div className="row team-container">
-
-            <div className="col">
-                <Team teamName = "1" players={players}/>
-            </div>
-
-            <div className="col">
-                <Team teamName = "2" players={players1}/>
-            </div>
-
-            <div className="col">
-                <Team teamName = "3" players={players2}/>
-            </div>
-
+                {CreateTeams(number)}
         </div>
 
        </div>

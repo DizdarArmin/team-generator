@@ -21,11 +21,13 @@ class Team extends Component {
 }
 
 render() {  
+
   var names = [];
   names.push(this.props.teamName);
   for (let i = 0; i < this.state.members.length; i++){
     names.push(this.props.players);
   }
+  
   return ( 
     <div>
         <ul>

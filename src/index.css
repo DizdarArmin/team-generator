@@ -12,11 +12,16 @@ code {
     monospace;
 }
 
+.scramble-wrapper{
+  min-height: 720px;
+}
+
 
 .header-wrapper{
 
   width: 100%;
   height: 100vh;
+  min-height: 720px;
   background-image: url(../src/header.png); 
   -webkit-background-size: cover;
   -moz-background-size: cover;
