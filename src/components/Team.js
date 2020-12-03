@@ -45,7 +45,7 @@ render() {
               </li>
               )
           })}
-          <li><button className="btn btn-secondary btn-name copy" onClick={() => copyToClipBoard(this.props.players)}>Copy names</button></li>
+          <li><button className="btn btn-secondary btn-name copy" onClick={() => copyToClipBoard("Team" + this.props.teamName + ": " + this.props.players)}>Copy names</button></li>
           </ul>
     </div>
     );
