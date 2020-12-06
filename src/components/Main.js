@@ -6,6 +6,8 @@ import React, { Component} from "react";
 let names = [];
 let number = 0;
 let submit = false;
+let error = false;
+let errorMessage = "";
 
 function Results(){
     let result = null;
@@ -21,6 +23,17 @@ function Results(){
     } 
     return result;
     
+}
+function Error(){
+    let element = null;
+    if (error) {
+        element =<div className="results-explain text-warning" id="results">
+        <h1>Error</h1>
+        <br></br>
+        <h3>{errorMessage}</h3>
+        </div>
+    } 
+    return element;
 }
 
 function Create(value, name, size){
@@ -53,7 +66,8 @@ class Main extends Component {
         super();
         this.state = {
             names: "",
-            number: "0"
+            number: "0",
+            error: ""
         }
         this.base = this.state
         this.handleSubmit = this.handleSubmit.bind(this);     
@@ -61,21 +75,39 @@ class Main extends Component {
 
 
         handleSubmit(event){
-            event.preventDefault();
+            submit = false;
+            error = false;
+            event.preventDefault(); 
             this.setState({names: [], number: 0})
-                let names = event.target.names.value;
-                let sizes = parseFloat(event.target.howmany.value)
-                names = names.split("\n")  
-                names = this.Randomize(names) 
-                console.log(names)
-                console.log(sizes)
-                this.setState({names:names, number: sizes});
+
+            let names = event.target.names.value;
+            let sizes = parseFloat(event.target.howmany.value)
+
+            if (names !== ""){ 
+                names = names.split("\n") 
+                
+                if (names.length >= sizes ){
+                    submit = true;
+                    names = this.Randomize(names) 
+                    this.setState({names:names, number: sizes});
+                }
+                else {
+                    error = true
+                    errorMessage = "Number of names can't be more then number of teams!";
+                }              
+            }
+            else {
+                error = true
+                errorMessage = "Please add names.";
+            }
+
         }
 
         clear = () => {
             this.setState(this.base);
             number = 0
             submit = false
+            error = false;
         }
 
         Randomize = (o) => {
@@ -118,7 +150,7 @@ render() {
         </form>  
         <div className="row buttons">
             <div className="col-sm">
-                <button className="btn btn-success main-btn" form="scramble" type="submit">Scramble!</button>
+                <button className="btn btn-success main-btn" form="scramble"  type="submit">Scramble!</button>
                 <button className="btn btn-secondary main-btn" form="scramble" type="reset" >Reset</button>
             </div>
             <div className="col-sm">
@@ -127,6 +159,7 @@ render() {
         </div>
         
         {Results()}
+        {Error()}
 
         <div className="row team-container">
                 {CreateTeams(this.state.number,this.state.names)}

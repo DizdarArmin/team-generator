@@ -6,12 +6,8 @@
     margin-top: 187px;
     display: inline-block;
 }
-
-
-h5{
-    font-size: 16px;
-    font-weight: 400;
-    font-style: normal;
+.title{
+    font-size: 62px;
 }
 
 @media only screen and (max-device-width: 415px) {

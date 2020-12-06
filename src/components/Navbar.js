@@ -3,7 +3,9 @@ import './Navbar.css';
 import React, { Component } from "react";
 
 class NavbarPage extends Component {
-
+  constructor(props){
+    super(props);
+}
 render() {
   return ( 
     <div>
@@ -14,7 +16,10 @@ render() {
               </a>   
             </div>
             <div className="navbar-nav">
-             <a className="navbar-item text-white" href=".">How it works</a>
+              <a className="navbar-item text-white"  onClick ={() => this.props.modal(true)}>
+                How it works
+              </a>
+             <a href={this.props.modal}></a>
             </div>
         </div>
     </div>

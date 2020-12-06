@@ -1,9 +1,11 @@
-import image from '../header.png';
 import './Header.css';
 import React, { Component } from "react";
 
-class NavbarPage extends Component {
 
+class NavbarPage extends Component {
+  constructor(props){
+    super(props);
+}
 render() {
   return ( 
     <div>
@@ -16,7 +18,7 @@ render() {
           <a href="#get-started"><button className="btn btn-success">Get started!</button></a>   
 
          <br></br>
-         <button className="btn btn-secondary">How does this work?</button>
+         <button  onClick ={() => this.props.modal(true)} className="btn btn-secondary">How does this work?</button>
          </div>
 
         </div>

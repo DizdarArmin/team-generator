@@ -13,7 +13,10 @@ h1{
     font-size: 62px;
     line-height: 50.4px;
 }
+
 .btn{
+    white-space: nowrap;
+    overflow: hidden;
     margin-top: 20px;
     width: 260px;
     height: 50px;
